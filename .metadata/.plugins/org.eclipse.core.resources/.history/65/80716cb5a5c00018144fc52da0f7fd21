@@ -1,0 +1,5 @@
+package com.capgemini.employeeapp;
+
+public class SpringMvcConfig {
+
+}

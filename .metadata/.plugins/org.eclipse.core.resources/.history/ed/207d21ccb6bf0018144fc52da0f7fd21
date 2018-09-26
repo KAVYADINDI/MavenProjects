@@ -1,0 +1,5 @@
+package com.capgemini.employeeapp.entities;
+
+public class Employee {
+
+}
