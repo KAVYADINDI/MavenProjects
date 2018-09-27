@@ -1,5 +1,0 @@
-package com.capgemini.employeeapp.repository;
-
-public interface EmployeeRepository {
-
-}

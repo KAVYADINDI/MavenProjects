@@ -1,0 +1,39 @@
+@charset "ISO-8859-1";
+body {
+background-color:  #6495ED;
+}
+.container {
+    position: relative;
+}
+.topleft {
+height : 100%;
+    background-color: blue;
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    font-size: 18px;
+}
+header h3{
+    display: inline;
+    margin-right: 1em;
+}
+img { 
+    width: 8%;
+    height: auto;
+    opacity: 0.9;
+}
+.topright {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    font-size: 18px;
+}
+#ABC {
+      background-color: Crimson;
+      height: 5%;
+      position: absolute;
+      top: 150;
+      left: 0;
+      right: 0;
+      width: 100%;
+    }

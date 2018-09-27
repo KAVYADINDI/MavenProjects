@@ -1,5 +1,0 @@
-package com.capgemini.employeeapp.repository.impl;
-
-public class EmployeeRepositioryImpl implements EmployeeRepository{
-
-}

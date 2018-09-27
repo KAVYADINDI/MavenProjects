@@ -1,7 +1,0 @@
-package com.capgemini.employeeapp.service.impl;
-
-import com.capgemini.employeeapp.service.EmployeeService;
-
-public class EmployeeServiceImpl implements EmployeeService {
-
-}

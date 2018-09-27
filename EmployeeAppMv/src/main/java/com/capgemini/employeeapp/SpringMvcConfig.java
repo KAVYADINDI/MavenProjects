@@ -12,14 +12,13 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.ViewResolverComposite;
 
 @Configuration
-@EnableWebMvc // equivalent to mvc annotation driven
+@EnableWebMvc
 @ComponentScan(basePackages = { "com.capgemini.employeeapp" })
-//@PropertySource("classpath:application.properties")
+@PropertySource("classpath:dbutil.properties")
 public class SpringMvcConfig {
-	/*@Value("${DB_URL}")
+	@Value("${DB_URL}")
 	private String dburl;
 
 	@Value("${DB.USERNAME}")
@@ -30,18 +29,14 @@ public class SpringMvcConfig {
 
 	@Value("${path}")
 	private String path;
-*/
+
 	@Bean
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		/*dataSource.setDriverClassName(path);
+		dataSource.setDriverClassName(path);
 		dataSource.setUrl(dburl);
 		dataSource.setUsername(username);
-		dataSource.setPassword(password);*/
-		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/kavya");
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
+		dataSource.setPassword(password);
 		return dataSource;
 	}
 

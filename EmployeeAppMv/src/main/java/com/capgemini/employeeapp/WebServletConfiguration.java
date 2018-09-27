@@ -10,15 +10,19 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class WebServletConfiguration implements WebApplicationInitializer {
 
 	@Override
-	public void onStartup(ServletContext servletContext) throws ServletException {
-	//creating an object of container(WebApplicationContext)
+	public void onStartup(ServletContext servletContext) throws ServletException {//web container will execure this class
+
+		// creating an object of container(WebApplicationContext)
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-	//Specify Spring MVC configuration class.	
+
+		// Specify Spring MVC configuration class.
 		context.register(SpringMvcConfig.class);
 		context.setServletContext(servletContext);
-		//Configuring DispatcherServlet
-		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(context));
-		dispatcher.setLoadOnStartup(1);
+
+		// Configuring DispatcherServlet
+		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher",
+				new DispatcherServlet(context));
+		dispatcher.setLoadOnStartup(1);//if not there will wait for first client request
 		dispatcher.addMapping("/");
 	}
 }
