@@ -35,8 +35,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	@Override
 	public boolean updatePassword(Customer customer, String oldPassword, String newPassword) {
 		int count = jdbcTemplate.update(
-				" update customers set customerPassword= ? WHERE customerId = ? AND customerPassword = ?",
-				new Object[] { newPassword, customer.getCustomerId(), oldPassword });
+				"update customers set customerPassword= ? WHERE customerId = ? AND customerPassword = ?",
+				new Object[] {newPassword, customer.getCustomerId(), oldPassword});
 		return count != 0;
 	}
 

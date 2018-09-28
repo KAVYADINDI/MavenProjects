@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<%@ include file="header.jsp" %>
+<%@ include file="home.jsp" %>
 <title>AccountBalance</title>
 </head>
 <body bgcolour="CornFlowerBlue" style="text-align:left">

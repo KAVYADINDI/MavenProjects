@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<%@ include file="header.jsp" %>
+<%@ include file="home.jsp" %>
 <title>Transfer Money</title>
 </head>
 <body  bgcolour="CornFlowerBlue" style="text-align:left">
@@ -13,10 +13,10 @@
 <form action="transferAmount.do" method="post">
 	<br><br><br>
 	<label> From Account: </label>
-		<input type="text" value="${customer.customerAccount.accountId}" name="fromAccId" readonly/>
+		<input type="text" value="${customer.customerAccount.accountId}" name="fromAccount" readonly/>
 		<br> <br>
 	<label> To Account: </label>
-		<input type="text" name="toAccId" required/>
+		<input type="text" name="toAccount" required/>
 		<br> <br>
 	<label> Amount: </label>
 		<input type="number"  name="amount" min=1000 max=25000 required/>

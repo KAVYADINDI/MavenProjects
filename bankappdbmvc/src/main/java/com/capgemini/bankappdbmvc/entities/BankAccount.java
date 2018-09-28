@@ -1,9 +1,16 @@
 package com.capgemini.bankappdbmvc.entities;
 
-public class BankAccount {
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
+public class BankAccount {
+	@NotNull
 	private long accountId;
+	@NotNull
 	private String accountType;
+	@NotNull
+
 	private double accountBalance;
 
 	public BankAccount() {

@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<%@ include file="header.jsp" %>
+<%@ include file="home.jsp" %>
 
 </head>
 <body>
@@ -14,10 +14,10 @@
 	<form action="changePassword.do" method="post">
 		<br><br>
 		<label>Old Password: </label>
-		<input type="text" name="customerOldPassword" placeholder="enter your Old Password" required/>
+		<input type="text" name=oldPassword placeholder="enter your Old Password" required/>
 		<br> <br>
 		<label>New Password: </label>
-		<input type="password" name="customerNewPassword" placeholder="enter your New Password"required/>
+		<input type="password" name="newPassword" placeholder="enter your New Password"required/>
 		<br> <br>
 		<input type="submit" value="update"/>
 	</form>

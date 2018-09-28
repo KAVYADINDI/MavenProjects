@@ -1,7 +1,5 @@
 package com.capgemini.bankappdbmvc.repository.impl;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -13,12 +11,6 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-//	private DataSource dataSource;
-
-//	public void setDataSource(DataSource dataSource) {
-//		this.dataSource = dataSource;
-//		this.jdbcTemplate = new JdbcTemplate(dataSource);
-//	}
 
 	@Override
 	public double getBalance(long accountId) {
@@ -35,3 +27,4 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
 	}
 
 }
+

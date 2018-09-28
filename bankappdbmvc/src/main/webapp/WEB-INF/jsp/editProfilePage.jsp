@@ -23,7 +23,7 @@
 		<br>
 		<br>
 		<form:label path="customerPassword">  Customer Password: </form:label>
-		<form:input type="password" path="customerPassword" readonly="readonly" />
+		<form:input type="password" path="customerPassword" readonly="readonly"/>
 		<br>
 		<br>
 		<form:label path="customerEmail"> Customer Email: </form:label>
@@ -35,7 +35,7 @@
 		<br>
 		<br>
 		<form:label path="customerDateOfBirth"> Customer DOB: </form:label>
-		<form:input type="date"  path="customerDateOfBirth" required="required" />
+		<form:input type="date"  path="customerDateOfBirth" required="required"/>
 		<br>
 		<br>
 		<br>
