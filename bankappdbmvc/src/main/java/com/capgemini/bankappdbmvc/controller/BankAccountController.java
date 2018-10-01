@@ -1,7 +1,17 @@
 package com.capgemini.bankappdbmvc.controller;
 
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,8 +42,16 @@ public class BankAccountController {
 
 	@RequestMapping(value = "/transferAmount.do", method = RequestMethod.POST)
 	public String fundTransfer(HttpSession session, HttpServletRequest request, Model model,
-			@RequestParam long fromAccount, @RequestParam long toAccount, @RequestParam double amount)
-			throws LowBalanceException {
+			@NotNull@RequestParam long fromAccount, @NotNull@RequestParam long toAccount,
+			@NotNull@Min(1000) @Max(10000) @RequestParam double amount) throws LowBalanceException {
+
+		ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
+		Validator validator = vf.getValidator();
+		Set<ConstraintViolation<Double>> violations = validator.validate(amount);
+
+		
+		if (violations.size() > 0)
+			throw new ConstraintViolationException(violations);
 		Customer customer = (Customer) session.getAttribute("customer");
 		if (bankAccountService.fundTransfer(fromAccount, toAccount, amount)) {
 			session.setAttribute("customer", customer);

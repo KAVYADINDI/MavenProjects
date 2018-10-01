@@ -33,6 +33,8 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\KAKALIDI\Downloads\simpleappl"/>
+			<item value="C:\Users\KAKALIDI\Downloads\simpleapp"/>
 			<item value="C:\Users\KAKALIDI\workspace\workspace maven\bankappdbmvc"/>
 			<item value="C:\Users\KAKALIDI\workspace\workspace maven\simpleapp"/>
 		</list>
@@ -58,6 +60,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\KAKALIDI\workspace\workspace maven\simpleapp"/>
 			<item value="C:\Users\KAKALIDI\workspace\workspace maven\EmployeeAppMv\src\main\java\com\capgemini\employeeapp\controller\EmployeeController.java"/>
 			<item value="C:\Users\KAKALIDI\workspace\workspace maven\employeeapp"/>
 			<item value="C:\Users\KAKALIDI\workspace\workspace maven"/>
@@ -73,13 +76,10 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="com.capgemini.BankAppDbMvc"/>
 		</list>
 		<list key="groupId">
-			<item value="com.capgemini"/>
 		</list>
 		<list key="artifactId">
-			<item value="BankAppDbMvc"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

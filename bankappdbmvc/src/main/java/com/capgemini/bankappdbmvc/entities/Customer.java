@@ -14,24 +14,19 @@ public class Customer {
 
 	@NotNull
 	private long customerId;
-	@NotNull
 	@Size(min=3,max=50)
 	private String customerName;
 	@NotNull
 	@Size(min=8)
-	@Pattern(regexp="")
+	@Pattern(regexp="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")
 	private String customerPassword;
-	@NotNull
 	@Email
 	private String customerEmail;
-	@NotNull
 	@Size(min=10, max=100)
 	private String customerAddress;
-	@NotNull
 	@Past
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate customerDateOfBirth;
-	@NotNull
 	private BankAccount customerAccount;
 
 	public Customer() {

@@ -16,10 +16,10 @@
 		<input type="text" value="${customer.customerAccount.accountId}" name="fromAccount" readonly/>
 		<br> <br>
 	<label> To Account: </label>
-		<input type="text" name="toAccount" required/>
+		<input type="text" name="toAccount" required="required"/>
 		<br> <br>
 	<label> Amount: </label>
-		<input type="number"  name="amount" min=1000 max=25000 required/>
+		<input type="number"  name="amount" required="required"/>
 		<br> <br>
 		<input type="reset" value="Clear"/>
 	<input type="submit" value="Submit"/>

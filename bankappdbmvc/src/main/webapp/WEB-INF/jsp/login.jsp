@@ -13,8 +13,8 @@
 	<h1>Login</h1>
 	<form:form action="login.do" method="post" modelAttribute="customer">
 		<br><br>
-		<form:label path="customerEmail">Email Id: </form:label>
-		<form:input path="customerEmail" type="text" placeholder="enter your emailId" required="required"/>
+		<form:label path="customerId">Customer Id: </form:label>
+		<form:input path="customerId" type="text" placeholder="enter your customerId" required="required"/>
 		<br> <br> 
 		<form:label path="customerPassword">Password: </form:label>
 		<form:input path="customerPassword" type="password" placeholder="enter your password" required="required"/>

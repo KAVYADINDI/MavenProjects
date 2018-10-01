@@ -3,6 +3,9 @@ package com.capgemini.bankappdbmvc.repository.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -18,25 +21,61 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 	@Override
 	public Customer authenticate(Customer customer) {
-		return jdbcTemplate.queryForObject(
-				"SELECT * FROM customers, bankAccounts where customers.accountId = bankAccounts.accountId and customerEmail = ? AND customerPassword = ?",
-				new Object[] { customer.getCustomerEmail(), customer.getCustomerPassword() }, new CustomerRowMapper());
+		try {
+			return jdbcTemplate.queryForObject(
+					"SELECT * FROM customers, bankAccounts where customers.accountId = bankAccounts.accountId and customerId = ? AND customerPassword = ?",
+					new Object[] { customer.getCustomerId(), customer.getCustomerPassword() }, new CustomerRowMapper());
+		} catch (DataAccessException e) {
+			e.initCause(new EmptyResultDataAccessException("No customer found: Expected 1 Actual 0", 1));
+			throw e;
+		}
+	}
+
+	public Customer getCustomer(Customer customer) {
+		try {
+			return jdbcTemplate.queryForObject(
+					"SELECT * FROM customers, bankAccounts where customers.accountId = bankAccounts.accountId and customerId = ?",
+					new Object[] { customer.getCustomerId() }, new CustomerRowMapper());
+		} catch (DataAccessException e) {
+			e.initCause(new EmptyResultDataAccessException("No customer found: Expected 1 Actual 0", 1));
+			throw e;
+		}
+	}
+
+	@Override
+	public Customer addCustomer(Customer customer) {
+		int count = jdbcTemplate.update("INSERT into customers VALUES(?,?,?,?,?,?)",
+				new Object[] { customer.getCustomerName(), customer.getCustomerPassword(), customer.getCustomerEmail(),
+						customer.getCustomerAddress(), customer.getCustomerDateOfBirth(), customer.getCustomerId() });
+
+		if (count != 0)
+			return customer;
+		return null;
+	}
+
+	@Override
+	public boolean deleteCustomer(long customerId) {
+		int count = jdbcTemplate.update("DELETE from customers WHERE customer_id=? ", new Object[] { customerId });
+		if (count != 0)
+			return true;
+		return false;
 	}
 
 	@Override
 	public Customer updateProfile(Customer customer) {
-		int count = jdbcTemplate.update(
-				"update customers set customerName= ? ,customerPassword= ? ,customerEmail= ? ,customerAddress= ? , customerDateOfBirth= ? where customerId= ? ",
-				new Object[] { customer.getCustomerName(), customer.getCustomerPassword(), customer.getCustomerEmail(),
-						customer.getCustomerAddress(), customer.getCustomerDateOfBirth(), customer.getCustomerId() });
-		return count != 0 ? customer : null;
-	}
+			int count = jdbcTemplate.update(
+					"update customers set customerName= ? ,customerPassword= ? ,customerEmail= ? ,customerAddress= ? , customerDateOfBirth= ? where customerId= ? ",
+					new Object[] { customer.getCustomerName(), customer.getCustomerPassword(),
+							customer.getCustomerEmail(), customer.getCustomerAddress(),
+							customer.getCustomerDateOfBirth(), customer.getCustomerId() });
+			return count != 0 ? customer : getCustomer(customer);
+		}
 
 	@Override
 	public boolean updatePassword(Customer customer, String oldPassword, String newPassword) {
 		int count = jdbcTemplate.update(
 				"update customers set customerPassword= ? WHERE customerId = ? AND customerPassword = ?",
-				new Object[] {newPassword, customer.getCustomerId(), oldPassword});
+				new Object[] { newPassword, customer.getCustomerId(), oldPassword });
 		return count != 0;
 	}
 

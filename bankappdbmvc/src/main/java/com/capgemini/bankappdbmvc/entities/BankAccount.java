@@ -1,6 +1,5 @@
 package com.capgemini.bankappdbmvc.entities;
 
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -10,7 +9,7 @@ public class BankAccount {
 	@NotNull
 	private String accountType;
 	@NotNull
-
+	@Min(1)
 	private double accountBalance;
 
 	public BankAccount() {
