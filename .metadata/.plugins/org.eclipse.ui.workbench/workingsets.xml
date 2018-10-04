@@ -7,5 +7,10 @@
 <workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1537764939381_1" label="Java Test Sources" name="test">
 <item elementID="=employeeapp/src\/test\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1538645051404_3" label="productsapp" name="productsapp"/>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1538645751872_4" label="simplerestapp" name="simplerestapp">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/simplerestapp" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1538648073720_5" label="productapp" name="productapp"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1537871738454_2" label="Window Working Set" name="Aggregate for window 1537871738454"/>
 </workingSetManager>

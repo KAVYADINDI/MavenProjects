@@ -17,7 +17,7 @@ public class Customer {
 	@Size(min=3,max=50)
 	private String customerName;
 	@NotNull
-	@Size(min=8)
+	@Size(min=8,max=15)
 	@Pattern(regexp="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")
 	private String customerPassword;
 	@Email

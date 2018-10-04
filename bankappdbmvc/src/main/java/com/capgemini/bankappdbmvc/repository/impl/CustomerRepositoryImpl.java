@@ -2,13 +2,14 @@ package com.capgemini.bankappdbmvc.repository.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
 import com.capgemini.bankappdbmvc.entities.BankAccount;
 import com.capgemini.bankappdbmvc.entities.Customer;
 import com.capgemini.bankappdbmvc.repository.CustomerRepository;
@@ -20,63 +21,80 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public Customer authenticate(Customer customer) {
+	public Customer authenticate(Customer customer) throws DataAccessException {
 		try {
 			return jdbcTemplate.queryForObject(
 					"SELECT * FROM customers, bankAccounts where customers.accountId = bankAccounts.accountId and customerId = ? AND customerPassword = ?",
 					new Object[] { customer.getCustomerId(), customer.getCustomerPassword() }, new CustomerRowMapper());
 		} catch (DataAccessException e) {
-			e.initCause(new EmptyResultDataAccessException("No customer found: Expected 1 Actual 0", 1));
+			if (e instanceof EmptyResultDataAccessException) {
+				e.initCause(new EmptyResultDataAccessException("Empty user not found", 1));
+			}
 			throw e;
 		}
 	}
 
-	public Customer getCustomer(Customer customer) {
+//	public Customer getCustomer(Customer customer) {
+//		try {
+//			return jdbcTemplate.queryForObject(
+//					"SELECT * FROM customers, bankAccounts where customers.accountId = bankAccounts.accountId and customerId = ?",
+//					new Object[] { customer.getCustomerId() }, new CustomerRowMapper());
+//		} catch (DataAccessException e) {
+//			e.initCause(new EmptyResultDataAccessException("No customer found: Expected 1 Actual 0", 1));
+//			throw e;
+//		}
+//	}
+
+//	@Override
+//	public Customer addCustomer(Customer customer) {
+//		int count = jdbcTemplate.update("INSERT into customers VALUES(?,?,?,?,?,?)",
+//				new Object[] { customer.getCustomerName(), customer.getCustomerPassword(), customer.getCustomerEmail(),
+//						customer.getCustomerAddress(), customer.getCustomerDateOfBirth(), customer.getCustomerId() });
+//
+//		if (count != 0)
+//			return customer;
+//		return null;
+//	}
+//
+//	@Override
+//	public boolean deleteCustomer(long customerId) {
+//		int count = jdbcTemplate.update("DELETE from customers WHERE customer_id=? ", new Object[] { customerId });
+//		if (count != 0)
+//			return true;
+//		return false;
+//	}
+
+	@Override
+	public Customer updateProfile(Customer customer) throws DataAccessException {
 		try {
-			return jdbcTemplate.queryForObject(
-					"SELECT * FROM customers, bankAccounts where customers.accountId = bankAccounts.accountId and customerId = ?",
-					new Object[] { customer.getCustomerId() }, new CustomerRowMapper());
-		} catch (DataAccessException e) {
-			e.initCause(new EmptyResultDataAccessException("No customer found: Expected 1 Actual 0", 1));
-			throw e;
-		}
-	}
-
-	@Override
-	public Customer addCustomer(Customer customer) {
-		int count = jdbcTemplate.update("INSERT into customers VALUES(?,?,?,?,?,?)",
-				new Object[] { customer.getCustomerName(), customer.getCustomerPassword(), customer.getCustomerEmail(),
-						customer.getCustomerAddress(), customer.getCustomerDateOfBirth(), customer.getCustomerId() });
-
-		if (count != 0)
-			return customer;
-		return null;
-	}
-
-	@Override
-	public boolean deleteCustomer(long customerId) {
-		int count = jdbcTemplate.update("DELETE from customers WHERE customer_id=? ", new Object[] { customerId });
-		if (count != 0)
-			return true;
-		return false;
-	}
-
-	@Override
-	public Customer updateProfile(Customer customer) {
-			int count = jdbcTemplate.update(
+			jdbcTemplate.update(
 					"update customers set customerName= ? ,customerPassword= ? ,customerEmail= ? ,customerAddress= ? , customerDateOfBirth= ? where customerId= ? ",
 					new Object[] { customer.getCustomerName(), customer.getCustomerPassword(),
 							customer.getCustomerEmail(), customer.getCustomerAddress(),
 							customer.getCustomerDateOfBirth(), customer.getCustomerId() });
-			return count != 0 ? customer : getCustomer(customer);
+			return customer;
+		} catch (DataAccessException e) {
+			if (e instanceof EmptyResultDataAccessException) {
+				e.initCause(new EmptyResultDataAccessException(1));
+			}
+			throw e;
 		}
+	}
 
 	@Override
-	public boolean updatePassword(Customer customer, String oldPassword, String newPassword) {
-		int count = jdbcTemplate.update(
-				"update customers set customerPassword= ? WHERE customerId = ? AND customerPassword = ?",
-				new Object[] { newPassword, customer.getCustomerId(), oldPassword });
-		return count != 0;
+	public boolean updatePassword(Customer customer, String oldPassword, String newPassword)
+			throws DataAccessException {
+		try {
+			int count = jdbcTemplate.update(
+					"UPDATE customers SET customerPassword=? WHERE customerId=? AND customerPassword=?",
+					new Object[] { newPassword, customer.getCustomerId(), oldPassword });
+			return count == 1 ? true : false;
+		} catch (DataAccessException e) {
+			if (e instanceof EmptyResultDataAccessException) {
+				e.initCause(new EmptyResultDataAccessException("updation failed", 1));
+			}
+			throw e;
+		}
 	}
 
 	private class CustomerRowMapper implements RowMapper<Customer> {

@@ -80,11 +80,6 @@ public class CustomerController {
 	@RequestMapping(value = "/editProfile.do", method = RequestMethod.POST)
 	public String updateProfile(@ModelAttribute Customer customer, HttpServletRequest request, HttpSession session) {
 
-		Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
-
-		if (violations.size() > 0)
-			throw new ConstraintViolationException(violations);
-
 		if (customerService.updateProfile(customer) != null) {
 			session.setAttribute("customer", customer);
 			return "successEdit";
@@ -107,10 +102,13 @@ public class CustomerController {
 		if (violations.size() > 0)
 			throw new ConstraintViolationException(violations);
 
-		if (customerService.updatePassword(customer, oldPassword, newPassword)) {
+		else if (customerService.updatePassword(customer, oldPassword, newPassword)) {
 			session.setAttribute("customer", customer);
 			return "successfulPasswordChange";
+		} else {
+			request.setAttribute("exception", "Enter correct old password");
+			return "errorPage";
 		}
-		return "errorPage";
+		
 	}
 }

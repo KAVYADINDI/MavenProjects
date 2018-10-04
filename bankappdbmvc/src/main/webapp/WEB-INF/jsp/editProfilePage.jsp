@@ -15,7 +15,7 @@
 		<br>
 		<br>
 		<form:label path="customerId"> Customer Id: </form:label>
-		<form:input type="number" path="customerId" readonly="readonly"/>
+		<form:input type="number" path="customerId" readonly="true"/>
 		<br>
 		<br>
 		<form:label path="customerName"> Customer Name: </form:label>
@@ -23,7 +23,7 @@
 		<br>
 		<br>
 		<form:label path="customerPassword">  Customer Password: </form:label>
-		<form:input type="password" path="customerPassword" readonly="readonly"/>
+		<form:input type="password" path="customerPassword" readonly="true"/>
 		<br>
 		<br>
 		<form:label path="customerEmail"> Customer Email: </form:label>

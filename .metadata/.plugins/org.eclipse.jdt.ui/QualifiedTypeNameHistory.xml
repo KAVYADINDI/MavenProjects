@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.capgemini.bankappdbmvc.exceptions.LowBalanceException"/>
-<fullyQualifiedTypeName name="com.capgemini.bankappdbmvc.repository.impl.CustomerRepositoryImpl"/>
-<fullyQualifiedTypeName name="java.sql.ResultSet"/>
-<fullyQualifiedTypeName name="com.capgemini.bankappdbmvc.repository.impl.CustomerRepositoryImpl.CustomerRowMapper"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.PropertySource"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
 <fullyQualifiedTypeName name="com.capgemini.bankappdbmvc.service.BankAccountService"/>
 <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.EnableAutoConfiguration"/>
-<fullyQualifiedTypeName name="com.capgemini.bankappdbmvc.service.CustomerService"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
 <fullyQualifiedTypeName name="javax.sql.DataSource"/>
@@ -39,7 +34,6 @@
 <fullyQualifiedTypeName name="com.capgemini.bankappdbmvc.controller.CustomerController"/>
 <fullyQualifiedTypeName name="java.lang.Class"/>
 <fullyQualifiedTypeName name="org.springframework.test.context.junit4.SpringRunner"/>
-<fullyQualifiedTypeName name="org.springframework.ui.Model"/>
 <fullyQualifiedTypeName name="org.springframework.validation.Validator"/>
 <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapProperties.Validation"/>
 <fullyQualifiedTypeName name="javax.validation.Validation"/>
@@ -53,11 +47,17 @@
 <fullyQualifiedTypeName name="javax.validation.constraints.Max"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="javax.validation.constraints.NotNull"/>
-<fullyQualifiedTypeName name="org.springframework.dao.EmptyResultDataAccessException"/>
-<fullyQualifiedTypeName name="org.springframework.dao.DataAccessException"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ControllerAdvice"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ExceptionHandler"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
-<fullyQualifiedTypeName name="com.capgemini.bankappdbmvc.exceptions.CustomerNotFoundException"/>
 <fullyQualifiedTypeName name="javax.security.auth.message.callback.PrivateKeyCallback.Request"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.SessionAttribute"/>
+<fullyQualifiedTypeName name="org.springframework.dao.EmptyResultDataAccessException"/>
+<fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+<fullyQualifiedTypeName name="org.springframework.dao.DataAccessException"/>
+<fullyQualifiedTypeName name="com.capgemini.bankappdbmvc.exceptions.CustomerNotFoundException"/>
+<fullyQualifiedTypeName name="org.springframework.test.web.servlet.setup.MockMvcBuilders"/>
+<fullyQualifiedTypeName name="org.springframework.test.web.servlet.MockMvc"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="com.capgemini.bankappdbmvc.service.CustomerService"/>
 </qualifiedTypeNameHistroy>

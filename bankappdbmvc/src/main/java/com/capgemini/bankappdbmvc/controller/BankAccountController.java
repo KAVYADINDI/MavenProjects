@@ -49,15 +49,17 @@ public class BankAccountController {
 		Validator validator = vf.getValidator();
 		Set<ConstraintViolation<Double>> violations = validator.validate(amount);
 
-		
+		Customer customer = (Customer) session.getAttribute("customer");
 		if (violations.size() > 0)
 			throw new ConstraintViolationException(violations);
-		Customer customer = (Customer) session.getAttribute("customer");
-		if (bankAccountService.fundTransfer(fromAccount, toAccount, amount)) {
+		
+		else if (bankAccountService.fundTransfer(fromAccount, toAccount, amount)) {
 			session.setAttribute("customer", customer);
 			return "successfullTransfer";
 		}
+		else {
+			request.setAttribute("exception", "Check the transaction limits");
 		return "errorPage";
 	}
-
+}
 }

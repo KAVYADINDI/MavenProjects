@@ -33,6 +33,10 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\KAKALIDI\workspace\workspace maven\productapp"/>
+			<item value="C:\Users\KAKALIDI\Downloads\productapp-master"/>
+			<item value="C:\Users\KAKALIDI\Downloads\simplerestapp-master"/>
+			<item value="C:\Users\KAKALIDI\Downloads\productsapp"/>
 			<item value="C:\Users\KAKALIDI\Downloads\simpleappl"/>
 			<item value="C:\Users\KAKALIDI\Downloads\simpleapp"/>
 			<item value="C:\Users\KAKALIDI\workspace\workspace maven\bankappdbmvc"/>

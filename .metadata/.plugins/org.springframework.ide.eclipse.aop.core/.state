@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<aop-reference-model>
-<aop-project name="bankappdbmvc"/>
-<aop-project name="simpleapp"/>
-<aop-project name="EmployeeAppMv"/>
-</aop-reference-model>
+<aop-reference-model/>
